@@ -95,12 +95,16 @@
 
 * **Method:**
   
-	string catalogs(string token)
+	string catalogs(string token, bool is_test = false)
 
    **Required:**
  
 	`token=[string]`
-
+	
+   **Optional:**
+   
+	`is_test=[bool]`
+	
 * **Success Response:**
   
 	`response=[string]`
@@ -114,7 +118,7 @@
 	
 	```
 	Paybook paybook = new Paybook();
-	token = paybook.login("some id_user");
+	token = paybook.catalogs("some token", "true");
 	```
 
 **Credentials**
@@ -175,7 +179,37 @@
 	Paybook paybook = new Paybook();
     status = paybook.status("some token", "some id_site", "some url_status");
 	```
+
+
+**twofa**
+----
+  Send token for a credential
+
+* **Method:**
   
+	JObject twofa(JObject twofa, string address)
+
+   **Required:**
+ 
+	`twofa=[JObject]`
+	`address=[string]`
+	
+* **Success Response:**
+  
+	`response=[string]`
+	Note: this response is a JSON Object
+	
+* **Error Response:**
+  
+	`Exception=[Exception]`
+
+* **Sample Call:**
+	
+	```
+	Paybook paybook = new Paybook();
+    twofa = paybook.twofa("some json twofa object", "some url");
+	```
+	
 **Accounts**
 ----
   Get the accounts registered in a specific institution
